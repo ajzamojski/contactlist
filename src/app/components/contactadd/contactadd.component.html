@@ -1,0 +1,104 @@
+<div class="container">
+	<h1>New Contact</h1>
+	<form>
+		<div class="row">
+		  <div class="form-group col-md-6">
+		  	<div class="alert alert-danger" *ngIf="firstNameError" role="alert" id="firstNameError">Please fill out your first name</div>
+		    <label for="firstName">First Name</label>
+				<input class="form-control" type="text" [(ngModel)]="contact.firstName" placeholder="" name="firstName" required>
+		  </div>
+		  <div class="form-group col-md-6">
+		  	<div class="alert alert-danger" *ngIf="lastNameError" role="alert" id="lastNameError">Please fill out your last name</div>
+		    <label for="lastName">Last Name</label>
+				<input class="form-control" type="text" [(ngModel)]="contact.lastName" placeholder="" name="lastName" required>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="form-group col-md-4">
+		    <label for="lastName">Email</label>
+		    <div class="alert alert-danger" *ngIf="emailError" role="alert" id="emailError">Please fill out your email</div>
+		    <div class="alert alert-danger" *ngIf="emailErrorSyntax" role="alert" id="emailError">Email address is invalid</div>
+				<input class="form-control" type="email" [(ngModel)]="contact.email" placeholder="" name="email" required>
+		  </div>
+		  <div class="form-group col-md-4">
+		    <label for="dob">Date of Birth</label>
+				<input class="form-control" type="date" [(ngModel)]="contact.dob" placeholder="" name="dob">
+		  </div>
+		  <div class="form-group col-md-4">
+		    <label for="dob">Phone</label>
+				<input class="form-control" type="tel" [(ngModel)]="contact.phone" placeholder="(555) 555-5555" name="phone">
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="form-group col-md-6">
+		  	<h3>Groups: </h3>
+		  	<div class="row checkRow">
+			  	<input type="checkbox" [(ngModel)]="familyCheck" (change)="checkFamily(familyCheck?'A':'B')" name="familyCheck">
+			    <label for="familyCheck" id="familyCheck">Family</label>
+			    <input type="checkbox" [(ngModel)]="friendCheck" (change)="checkFriend(friendCheck?'A':'B')" name="friendCheck">
+					<label for="friendCheck" id="friendCheck">Friend</label>
+				</div>
+				<div class="row checkRow">
+					<input type="checkbox" [(ngModel)]="colleagueCheck" (change)="checkColleague(colleagueCheck?'A':'B')" name="colleagueCheck">	
+					<label for="colleagueCheck" id="colleagueCheck">Colleague</label>
+					<input type="checkbox" [(ngModel)]="associateCheck" (change)="checkAssociate(associateCheck?'A':'B')" name="associateCheck">
+					<label for="associateCheck" for="associateCheck">Associate</label>
+				</div>
+			</div>
+		  <div class="form-group col-md-6">
+		    <label for="comments">Comments</label>
+		    <textarea class="form-control" [(ngModel)]="contact.comments" id="comments" rows="3" name="comments" maxlength="2000"></textarea>
+		  </div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-3">
+		    <label for="profilePic">Profile Picture</label>
+				<input class="form-control" type="file" accept="image/*" id="file" (change)="fileChange($event.target.files)" placeholder="" name="profilePicture">
+		  </div>
+		</div>
+	</form>
+	<div class="row">
+		<div class="form-group col-md-12">
+			<button type="button" class="btn btn-primary" aria-label="Open" (click)="addContact()">Add Contact</button>
+		</div>
+		<div class="form-group col-md-12">
+	  	<button type="button" class="btn btn-danger" (click)="openModal(template)">Cancel</button>
+	  </div>
+	</div>
+</div>	
+
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Add Contact</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        Are you sure you want to cancel?
+    </div>
+    <div class="modal-footer">
+     <button type="button" class="btn btn-secondary" aria-label="Close" (click)="cancelContactAdd()">Yes</button>
+     <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modalRef.hide()">No</button>
+    </div>
+</ng-template>
+<!-- <div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Add/h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to submit?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div> -->

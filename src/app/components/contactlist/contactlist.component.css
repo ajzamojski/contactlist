@@ -1,0 +1,25 @@
+#idCard {
+	margin-bottom: 15px;
+}
+
+#comments {
+	max-height: 165px;
+}
+
+#profileImage {
+	margin: 5px;
+	border: 2px solid black;
+}
+
+#comments {
+	overflow: auto;
+}
+
+#contactEdit, #contactDelete {
+	float: right;
+	margin: 0px 10px;
+}
+
+#contactbuttons {
+	float: right;
+}

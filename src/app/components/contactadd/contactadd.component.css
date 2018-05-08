@@ -1,0 +1,15 @@
+#firstNameError, #lastNameError, #emailError {
+	display: block;
+}
+
+input[type=checkbox] {
+	margin-right: 5px;
+}
+
+#familyCheck, #friendCheck, #colleagueCheck, #associateCheck {
+	padding: 0px 10px 0px;
+}
+
+.checkRow {
+	margin-left: 5px;
+}

@@ -1,0 +1,60 @@
+<div class="container">
+  <p class="text-success" [ngClass]="{'text-danger': selectedMsg == 'Contact has not been added'}" *ngIf="msg">{{selectedMsg}}</p>
+  <div class="card" id="idCard" *ngFor= "let contact of contactsArr | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+	  <div class="card-header bg-primary">
+	  <span> Contact {{i + 1}}</span>
+	  	<div class="justify-content-end col-sm-12 col-md-6 col-lg-4 col-xl-4" id="contactbuttons">
+	  	<button type="button" id="contactDelete" class="btn btn-danger" (click)="openModal(template)">Delete</button>	
+		    <a class="btn btn-secondary" id="contactEdit" [routerLink]="['/editcontact', contact._id]">Edit</a>
+		  </div>
+		</div>
+		<div class="container-fluid">
+	    <div class="row">
+		    <div class="col-sm-6 col-md-6 col-lg-3 col-xl-2">
+		   		<img src={{contact.profilePic}} id="profileImage" alt="ProfilePicture" width="150" height="150"/>
+		   	</div>
+		    <div class="card-body col-sm-6 col-md-6 col-lg-2 col-xl-3">
+		    	<div class="row">
+						<p><b>{{ contact.firstName + " " + contact.lastName }} </b></p> 
+					</div>
+					<div class="row">
+						<p><b>Date of Birth</b>: {{ contact.dob }}</p>
+					</div>
+				</div>
+				<div class="card-body col-sm-6 col-md-6 col-lg-2 col-xl-2">
+						<div class="row">
+							<p><b>Email</b>: {{ contact.email }}</p>
+						</div>
+						<div class="row">
+							<p><b>Phone</b>: {{ contact.phone }}</p>
+						</div>
+				</div>
+		    <div class="card-body col-sm-6 col-md-6 col-lg-2 col-xl-2">
+		    	<p><b>Groups:</b></p>
+		    	<p *ngFor="let group of contact.groups"> {{group + " "}}</p>
+		    </div>
+		    <div class="card-body col-sm-6 col-md-6 col-lg-3 col-xl-3" id="comments">
+		    	<p> {{contact.comments}}</p>
+		    </div>
+			  <ng-template #template>
+			    <div class="modal-header">
+			        <h4 class="modal-title pull-left">Add Contact</h4>
+			        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+			            <span aria-hidden="true">&times;</span>
+			        </button>
+			    </div>
+			    <div class="modal-body">
+			        Are you sure you want to delete contact?
+			    </div>
+			    <div class="modal-footer">
+			    	<button type="button" class="btn btn-secondary" aria-label="Close" (click)="deleteContact(contact)">Yes</button>
+			     <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modalRef.hide()">No</button>
+			    </div>
+				</ng-template>
+	  	</div>
+	  </div>
+  </div>
+</div>
+
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
