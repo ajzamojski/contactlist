@@ -16,6 +16,9 @@ cloudinary.config({
   api_secret: process.env.API_SECRET
 });
 
+// router.get('/', (req, res) => {
+// 	res.sendFile('../index.html')
+// })
 
 //this route retrieves all our contacts from the db and sorts it by first name
 router.get('/contacts', (req, res, next) => {
