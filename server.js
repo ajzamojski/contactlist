@@ -37,6 +37,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended:true})) 
 app.use(bodyParser.json());
 app.use('/', apiRoute);
+res.sendFile('/index.html' , { root : __dirname});
 
 // start server here
 app.listen(PORT, () => {
