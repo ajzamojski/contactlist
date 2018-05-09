@@ -10,6 +10,5 @@
 	    <a routerLink="/contacts"><button class="btn btn-dark">My Contacts</button></a>
 	  </li>
 	</ul>
-  <router-outlet></router-outlet>
-  <!-- <app-contactlist></app-contactlist> -->
+  <router-outlet (activate)="onActivate($event)"></router-outlet>
 </div>

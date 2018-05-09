@@ -6,6 +6,10 @@
 	max-height: 165px;
 }
 
+#contactHeader {
+	color: white;
+}
+
 #profileImage {
 	margin: 5px;
 	border: 2px solid black;
@@ -22,4 +26,8 @@
 
 #contactbuttons {
 	float: right;
+}
+
+#contactGroup {
+	margin: 0px;
 }

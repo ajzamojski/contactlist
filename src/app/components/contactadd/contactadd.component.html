@@ -25,6 +25,7 @@
 				<input class="form-control" type="date" [(ngModel)]="contact.dob" placeholder="" name="dob">
 		  </div>
 		  <div class="form-group col-md-4">
+		  	<div class="alert alert-danger" *ngIf="phoneError" role="alert" id="phoneError">Please enter a correct phone number</div>
 		    <label for="dob">Phone</label>
 				<input class="form-control" type="tel" [(ngModel)]="contact.phone" placeholder="(555) 555-5555" name="phone">
 		  </div>

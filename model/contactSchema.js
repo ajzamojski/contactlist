@@ -4,21 +4,24 @@ const contactSchema = mongoose.Schema({
 
 	firstName: {
 		type: String,
-		required: true
+		required: [true, 'First Name is required']
 	},
 
 	lastName: {
 		type: String,
-		required: true
+		required: [true, 'Last Name is required']
 	},
 
 	email: {
 		type: String,
-		required: true
+		required: [true, 'Email is required']
 	},
 
 	phone: {
-		type: String
+		type: String,
+    minlength: 10,
+    maxlength: 10,
+    required: [true, 'Phone is required']
 	},
 
 	profilePic: {

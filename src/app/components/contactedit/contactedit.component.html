@@ -2,6 +2,17 @@
 	<h1>Edit Contact</h1>
 	<form>
 		<div class="row">
+			<div class="form-group col-md-3">
+				<div class="col-4">
+	   			<img src={{contact.profilePic}} alt="ProfilePicture" width="200" height="200" />
+	   		</div>
+			</div>
+			<div class="form-group col-md-3">
+		    <label for="profilePic">Profile Picture</label>
+				<input class="form-control" type="file" accept="image/*" placeholder="" (change)="fileChange($event.target.files)" name="profilePicture">
+		  </div>	
+		</div>
+		<div class="row">
 		  <div class="form-group col-md-6">
 		  	<div class="alert alert-danger" *ngIf="firstNameError" role="alert" id="firstNameError">Please fill out your first name</div>
 		    <label for="firstName">First Name</label>
@@ -24,6 +35,7 @@
 				<input class="form-control" type="date" [(ngModel)]="contact.dob" placeholder="" name="dob">
 		  </div>
 		  <div class="form-group col-md-4">
+		  	<div class="alert alert-danger" *ngIf="phoneError" role="alert" id="phoneError">Please enter a correct phone number</div>
 		    <label for="dob">Phone</label>
 				<input class="form-control" type="tel" [(ngModel)]="contact.phone" placeholder="(555)555-5555" name="phone">
 		  </div>
@@ -48,19 +60,6 @@
 		    <label for="comments">Comments</label>
 		    <textarea class="form-control" [(ngModel)]="contact.comments" id="comments" rows="3" name="comments"></textarea>
 		  </div>
-		</div>
-		<div class="row">
-			<div class="form-group col-md-3">
-				<div class="col-4">
-	   			<img src={{contact.profilePic}} alt="ProfilePicture" width="200" height="200" />
-	   		</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="form-group col-md-4">
-		    <label for="profilePic">Profile Picture</label>
-				<input class="form-control" type="file" accept="image/*" placeholder="" (change)="fileChange($event.target.files)" name="profilePicture">
-		  </div>	
 		</div>
 	</form>
 	<div class="row">

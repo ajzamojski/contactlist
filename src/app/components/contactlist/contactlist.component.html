@@ -1,11 +1,11 @@
 <div class="container">
   <p class="text-success" [ngClass]="{'text-danger': selectedMsg == 'Contact has not been added'}" *ngIf="msg">{{selectedMsg}}</p>
   <div class="card" id="idCard" *ngFor= "let contact of contactsArr | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
-	  <div class="card-header bg-primary">
-	  <span> Contact {{i + 1}}</span>
+	  <div class="card-header bg-dark">
+	  <span id="contactHeader"> Contact {{i + 1}}</span>
 	  	<div class="justify-content-end col-sm-12 col-md-6 col-lg-4 col-xl-4" id="contactbuttons">
 	  	<button type="button" id="contactDelete" class="btn btn-danger" (click)="openModal(template)">Delete</button>	
-		    <a class="btn btn-secondary" id="contactEdit" [routerLink]="['/editcontact', contact._id]">Edit</a>
+		  <a class="btn btn-secondary" id="contactEdit" [routerLink]="['/editcontact', contact._id]">Edit</a>
 		  </div>
 		</div>
 		<div class="container-fluid">
@@ -31,7 +31,7 @@
 				</div>
 		    <div class="card-body col-sm-6 col-md-6 col-lg-2 col-xl-2">
 		    	<p><b>Groups:</b></p>
-		    	<p *ngFor="let group of contact.groups"> {{group + " "}}</p>
+		    	<p id="contactGroup" *ngFor="let group of contact.groups"> {{group + " "}}</p>
 		    </div>
 		    <div class="card-body col-sm-6 col-md-6 col-lg-3 col-xl-3" id="comments">
 		    	<p> {{contact.comments}}</p>

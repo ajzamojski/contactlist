@@ -26,12 +26,13 @@ export class ContacteditComponent implements OnInit {
   associateCheck: Boolean;
   colleagueCheck: Boolean;
   emailError:Boolean = false;
+  phoneError:Boolean = false;
   emailErrorSyntax:Boolean = false;
 	contact = new Contact;
 	modalRef: BsModalRef;
 	profilePicture: File;
 	emailPattern:RegExp =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
+	phonePattern:RegExp = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
 
   constructor(private dataService: DataService, 
@@ -143,53 +144,43 @@ export class ContacteditComponent implements OnInit {
   	this.firstNameError = false;
   	this.lastNameError = false;
   	this.emailError = false;
+  	this.phoneError = false;
+  	this.emailErrorSyntax = false;
 
   	//conditional statements for first name, last name, and email to check if fields are
   	//not empty
-  	if (this.contact.firstName == "" && this.contact.lastName == "" && this.contact.email == "") {
-  		this.firstNameError = true;
-  		this.lastNameError = true;
-  		this.emailError = true;
-  		return;
-  	}
-
-  	if (this.contact.firstName == "" && this.contact.lastName == "") {
-  			this.firstNameError = true;
-  			this.lastNameError = true;
-  			return;
-  	}
-
-  	if (this.contact.firstName == "" && this.contact.email == "") {
-  			this.firstNameError = true;
-  			this.emailError = true;
-  			return;
-  	}
-
-  	if (this.contact.lastName == "" && this.contact.email == "") {
-  			this.lastNameError = true;
-  			this.emailError = true;
-  			return;
-  	}
-
   	if (this.contact.firstName == "") {
   		this.firstNameError = true;
-  		return;
   	}
-
+  	
   	if (this.contact.lastName == "") {
   		this.lastNameError = true;
-  		return;
   	}
 
   	if (this.contact.email == "") {
   		this.emailError = true;
-  		return;
+  	}
+
+  	if (this.contact.phone == "") {
+  		this.phoneError = true;
+  	}
+
+		if (this.contact.firstName == "" || this.contact.lastName == "" || this.contact.email == "" || this.contact.phone == "") {
+	  		return;
   	}
 
   	//checks for the correct email syntax
   	if (this.contact.email.length > 0) {
   		if (!this.contact.email.match(this.emailPattern)) {
   			this.emailErrorSyntax = true;
+  			return;
+  		}
+  	}
+
+  	// checks for correct phone syntax
+  	if (this.contact.phone.length > 0) {
+  		if (!this.contact.phone.match(this.phonePattern)) {
+  			this.phoneError = true;
   			return;
   		}
   	}
