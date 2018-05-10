@@ -11,13 +11,13 @@ export class DataService {
 
   // getcontactlist retrieves all contacts from server
   getContactList() {
-  	return this.http.get('http://localhost:3000/contacts')
+  	return this.http.get('/contacts')
   		.map(res => res.json());
   }
 
   // findOneContact retrieves on individual contacts based on id from the server
   findOneContact(id) {
-		return this.http.get('http://localhost:3000/findcontact/' + id)
+		return this.http.get('/findcontact/' + id)
   		.map(res => res.json());
   }
 
@@ -26,7 +26,7 @@ export class DataService {
   	console.log(newContact);
   	let headers = new Headers;
   	headers.append('Contact-Type', 'multipart/form-data');
-  	return this.http.post('http://localhost:3000/newcontact', newContact, {headers:headers})
+  	return this.http.post('/newcontact', newContact, {headers:headers})
   		.map(res => res.json());
   }
 
@@ -35,7 +35,7 @@ export class DataService {
 		let headers = new Headers;
   	headers.append('Contact-Type', 'application/json');
 
-  	return this.http.put('http://localhost:3000/contact/' + _id, updateData, {headers:headers})
+  	return this.http.put('/contact/' + _id, updateData, {headers:headers})
   		.map(res => res.json());
   }
 
