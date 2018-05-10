@@ -21,7 +21,7 @@ cloudinary.config({
 // })
 
 //this route retrieves all our contacts from the db and sorts it by first name
-router.get('/contacts', (req, res, next) => {
+router.get('/apicontacts', (req, res, next) => {
 	Contact.find().sort({firstName: 1}).exec((err, items) => {
 		if (err) {
 			res.json(err)
