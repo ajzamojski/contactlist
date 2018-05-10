@@ -34,15 +34,16 @@ db.once("open", function() {
 
 // express middleware in use and routes for our api
 app.use(cors());
-app.use(bodyParser.urlencoded({extended:true})) 
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 // app.use('/', apiRoute);
-require('./routes/routes')(app);
 
 app.use(express.static(__dirname + '/dist'));
 app.get('/*', function(req,res) {
     res.sendFile(path.join(__dirname+'/dist/index.html'));
 });
+require('./routes/routes')(app);
+
 
 // start server here
 app.listen(PORT, () => {
