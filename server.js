@@ -36,7 +36,7 @@ db.once("open", function() {
 app.use(cors());
 app.use(bodyParser.urlencoded({extended:true})) 
 app.use(bodyParser.json());
-app.use('/', apiRoute);
+// app.use('/', apiRoute);
 
 app.use(express.static(__dirname + '/dist'));
 app.get('/*', function(req,res) {
