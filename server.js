@@ -37,6 +37,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended:true})) 
 app.use(bodyParser.json());
 // app.use('/', apiRoute);
+require('./routes/routes')(app);
 
 app.use(express.static(__dirname + '/dist'));
 app.get('/*', function(req,res) {
