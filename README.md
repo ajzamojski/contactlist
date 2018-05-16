@@ -1,5 +1,14 @@
 # Contactlist
 
+## Description
+This is a contact list made with MEAN Stack (`Mongo`, `Express`, `Angular`, `Node`)
+![screenshot1](./assets/images/screenshot1.png)
+![screenshot2](./assets/images/screenshot2.png)
+
+## Link
+[Contact List Site](https://ajzcontactlist.herokuapp.com/)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
 ## Development server
